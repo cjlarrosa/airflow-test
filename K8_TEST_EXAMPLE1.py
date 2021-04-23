@@ -84,14 +84,14 @@ with DAG(
     one_task = PythonOperator(
         task_id="one_task",
         python_callable=print_stuff,
-        executor_config={"KubernetesExecutor": {"image": "apache/airflow:1.10.12"}}
+        executor_config={"KubernetesExecutor": {"image": "docker.io/bitnami/airflow-worker:2.0.1-debian-10-r52"}}
     )
 
     # Use the zip binary, which is only found in this special docker image
     two_task = PythonOperator(
         task_id="two_task",
         python_callable=use_zip_binary,
-        executor_config={"KubernetesExecutor": {"image": "apache/airflow:latest"}}
+        executor_config={"KubernetesExecutor": {"image": "docker.io/bitnami/airflow-worker:2.0.1-debian-10-r52"}}
     )
 
 
